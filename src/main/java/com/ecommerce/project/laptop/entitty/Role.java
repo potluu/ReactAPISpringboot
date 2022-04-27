@@ -18,10 +18,11 @@ import java.util.Set;
 @Data
 @Table(name = "roles")
 @Builder
+
 public class Role {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private int id;
 
 	@Column(length = 20)
 	private String name;
