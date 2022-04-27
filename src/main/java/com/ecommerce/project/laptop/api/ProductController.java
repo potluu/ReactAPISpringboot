@@ -28,10 +28,8 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class ProductController {
 
-    @Autowired
-    private ProductServiceImpl productService;
-    @Autowired
-    private BrandServiceImpl brandService;
+    private final ProductServiceImpl productService;
+    private final BrandServiceImpl brandService;
 
     private final FileUtils fileUtils;
 

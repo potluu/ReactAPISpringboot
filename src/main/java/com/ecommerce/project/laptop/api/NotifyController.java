@@ -9,6 +9,7 @@ import com.ecommerce.project.laptop.services.AccountService;
 import com.ecommerce.project.laptop.services.AccountServiceImpl;
 import com.ecommerce.project.laptop.services.NotifyServiceImpl;
 import com.ecommerce.project.laptop.utils.TimeUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,6 +26,7 @@ import java.util.Set;
 
 @RestController
 @RequestMapping("api/v1/")
+@RequiredArgsConstructor
 public class NotifyController {
     @Autowired
     private NotifyServiceImpl notifyService;

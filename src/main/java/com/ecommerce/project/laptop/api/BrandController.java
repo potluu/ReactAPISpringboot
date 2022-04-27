@@ -3,6 +3,7 @@ package com.ecommerce.project.laptop.api;
 import com.ecommerce.project.laptop.dto.BrandDto;
 import com.ecommerce.project.laptop.entitty.Brand;
 import com.ecommerce.project.laptop.services.BrandServiceImpl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,9 +16,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 @Log4j2
+@RequiredArgsConstructor
 public class BrandController {
-    @Autowired
-    private BrandServiceImpl brandService;
+    private final BrandServiceImpl brandService;
 
     /*
 

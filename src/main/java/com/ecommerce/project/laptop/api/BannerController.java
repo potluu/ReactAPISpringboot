@@ -3,7 +3,7 @@ package com.ecommerce.project.laptop.api;
 import com.ecommerce.project.laptop.entitty.Banner;
 import com.ecommerce.project.laptop.services.BannerServiceImpl;
 import com.ecommerce.project.laptop.utils.FileUtils;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -12,13 +12,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @RestController
-@RequestMapping(value = "/api/v1")
+@RequestMapping(value = "/api/v12")
+@RequiredArgsConstructor
 public class BannerController {
 
-    @Autowired
-    private BannerServiceImpl bannerService;
-    @Autowired
-    private FileUtils fileUtils;
+    private final BannerServiceImpl bannerService;
+    private final FileUtils fileUtils;
+
+
     /*
 
      */

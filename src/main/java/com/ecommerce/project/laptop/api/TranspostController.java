@@ -4,6 +4,7 @@ package com.ecommerce.project.laptop.api;
 import com.ecommerce.project.laptop.dto.TranspostDto;
 import com.ecommerce.project.laptop.entitty.Transpost;
 import com.ecommerce.project.laptop.services.TranspostServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +15,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class TranspostController {
 
-    @Autowired
-    private TranspostServiceImpl transpostService;
+    private final TranspostServiceImpl transpostService;
 
     @GetMapping("/transposts")
     public ResponseEntity<?> getAllTranspost() {

@@ -4,6 +4,7 @@ import com.ecommerce.project.laptop.dto.AccountDto;
 import com.ecommerce.project.laptop.entitty.*;
 import com.ecommerce.project.laptop.services.AccountServiceImpl;
 import com.ecommerce.project.laptop.utils.TimeUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,11 +16,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/account")
+@RequiredArgsConstructor
 public class AccountController {
-    @Autowired
-    private AccountServiceImpl accountService;
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private final AccountServiceImpl accountService;
+    private final PasswordEncoder passwordEncoder;
     /*
 
      */

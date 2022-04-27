@@ -4,6 +4,7 @@ import com.ecommerce.project.laptop.dto.OrderDto;
 import com.ecommerce.project.laptop.entitty.Order;
 import com.ecommerce.project.laptop.services.OrderServiceImpl;
 import com.ecommerce.project.laptop.utils.StringUlis;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +15,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/")
+@RequiredArgsConstructor
 public class OrderController {
 
     @Autowired
-    private OrderServiceImpl orderService;
+    private final OrderServiceImpl orderService;
 
     @GetMapping("/orders")
     public ResponseEntity<?> getAllOrder() {

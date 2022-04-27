@@ -26,7 +26,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Account account= accountRep.findById(1l).orElse(null);
+        Account account= accountRep.findByEmail(username);
         if(account==null){
             throw new UsernameNotFoundException("user not found");
         }else {

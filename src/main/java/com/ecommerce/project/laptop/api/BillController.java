@@ -6,6 +6,7 @@ import com.ecommerce.project.laptop.entitty.Payment;
 import com.ecommerce.project.laptop.services.BillServiceImpl;
 import com.ecommerce.project.laptop.services.PaymentServiceImpl;
 import com.ecommerce.project.laptop.utils.TimeUtils;
+import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.ApiStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,13 +16,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/api/v1")
+@RequiredArgsConstructor
 public class BillController {
 
-    @Autowired
-    private BillServiceImpl billService;
-
-    @Autowired
-    private PaymentServiceImpl paymentService;
+    private final BillServiceImpl billService;
+    private final PaymentServiceImpl paymentService;
 
     @GetMapping("/bills")
     public ResponseEntity<?> getAllBill() {

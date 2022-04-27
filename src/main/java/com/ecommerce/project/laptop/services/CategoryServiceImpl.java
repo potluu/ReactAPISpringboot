@@ -1,6 +1,5 @@
 package com.ecommerce.project.laptop.services;
 
-import com.ecommerce.project.laptop.entitty.Brand;
 import com.ecommerce.project.laptop.entitty.Category;
 import com.ecommerce.project.laptop.reponsitory.CategoryReponsitory;
 import lombok.extern.log4j.Log4j2;
