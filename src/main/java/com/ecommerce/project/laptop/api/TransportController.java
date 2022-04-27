@@ -3,9 +3,8 @@ package com.ecommerce.project.laptop.api;
 
 import com.ecommerce.project.laptop.dto.TranspostDto;
 import com.ecommerce.project.laptop.entitty.Transpost;
-import com.ecommerce.project.laptop.services.TranspostServiceImpl;
+import com.ecommerce.project.laptop.services.TransportServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,17 +15,17 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1")
 @RequiredArgsConstructor
-public class TranspostController {
+public class TransportController {
 
-    private final TranspostServiceImpl transpostService;
+    private final TransportServiceImpl transpostService;
 
     @GetMapping("/transposts")
     public ResponseEntity<?> getAllTranspost() {
-        List<Transpost> transposts=transpostService.getALlTranspost();
-        if(!transposts.isEmpty()){
-            List<TranspostDto> transpostDtos=new ArrayList<>();
-            transposts.forEach(transpost -> transpostDtos.add(new TranspostDto(transpost)));
-            return ResponseEntity.status(HttpStatus.OK).body(transpostDtos);
+        List<Transpost> transports=transpostService.getALlTranspost();
+        if(!transports.isEmpty()){
+            List<TranspostDto> transportDos=new ArrayList<>();
+            transports.forEach(transport -> transportDos.add(new TranspostDto(transport)));
+            return ResponseEntity.status(HttpStatus.OK).body(transportDos);
         }else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("not found data ");
         }

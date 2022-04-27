@@ -1,8 +1,8 @@
 package com.ecommerce.project.laptop.services;
 
 import com.ecommerce.project.laptop.entitty.Transpost;
-import com.ecommerce.project.laptop.reponsitory.TranspostReponsitory;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.ecommerce.project.laptop.reponsitory.TransportReponsitory;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -10,25 +10,25 @@ import java.util.List;
 
 @Service
 @Transactional
-public class TranspostServiceImpl implements TranspostService {
+@RequiredArgsConstructor
+public class TransportServiceImpl implements TransportService {
 
-    @Autowired
-    private TranspostReponsitory transpostReponsitory;
+    private final TransportReponsitory transportReponsitory;
 
     @Override
     public List<Transpost> getALlTranspost() {
-        return transpostReponsitory.findAll();
+        return transportReponsitory.findAll();
     }
 
     @Override
     public Transpost getTranspostById(long id) {
-        return transpostReponsitory.findById(id).orElse(null);
+        return transportReponsitory.findById(id).orElse(null);
     }
 
     @Override
     public boolean deleteById(long id) {
-        if(transpostReponsitory.existsById(id)){
-            transpostReponsitory.deleteById(id);
+        if(transportReponsitory.existsById(id)){
+            transportReponsitory.deleteById(id);
             return true;
         }else {
             return false;
@@ -37,17 +37,17 @@ public class TranspostServiceImpl implements TranspostService {
 
     @Override
     public Transpost saveTranspost(Transpost transpost) {
-        return transpostReponsitory.save(transpost);
+        return transportReponsitory.save(transpost);
     }
 
     @Override
     public Transpost updateTranspost(Transpost transpost) {
-        return transpostReponsitory.save(transpost);
+        return transportReponsitory.save(transpost);
     }
 
     @Override
     public boolean existById(long id) {
-        if(transpostReponsitory.existsById(id)){
+        if(transportReponsitory.existsById(id)){
             return true;
         }
         return false;

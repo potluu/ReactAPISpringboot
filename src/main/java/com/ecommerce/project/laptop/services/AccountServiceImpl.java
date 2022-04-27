@@ -4,6 +4,7 @@ import com.ecommerce.project.laptop.entitty.Account;
 import com.ecommerce.project.laptop.entitty.Administrator;
 import com.ecommerce.project.laptop.entitty.User;
 import com.ecommerce.project.laptop.reponsitory.AccountReponsitory;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,10 +21,9 @@ import java.util.Set;
 @Service
 @Transactional
 @Log4j2
+@RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
-    @Autowired
-    private AccountReponsitory accountRep;
-
+    private final AccountReponsitory accountRep;
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Account account= accountRep.findByEmail(username);

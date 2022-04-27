@@ -5,7 +5,7 @@ import com.ecommerce.project.laptop.entitty.Transpost;
 
 import java.util.List;
 
-public interface TranspostService {
+public interface TransportService {
 
     List<Transpost> getALlTranspost();
 

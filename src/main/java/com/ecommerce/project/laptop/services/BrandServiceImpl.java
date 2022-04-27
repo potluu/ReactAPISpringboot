@@ -3,6 +3,7 @@ package com.ecommerce.project.laptop.services;
 import com.ecommerce.project.laptop.component.Excel;
 import com.ecommerce.project.laptop.entitty.Brand;
 import com.ecommerce.project.laptop.reponsitory.BrandReponsitory;
+import lombok.RequiredArgsConstructor;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +13,11 @@ import java.util.EmptyStackException;
 import java.util.List;
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class BrandServiceImpl implements BrandService{
 
 
-    @Autowired
-    private BrandReponsitory brandReponsitory;
+    private final BrandReponsitory brandReponsitory;
 
 
     @Override

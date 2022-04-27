@@ -2,6 +2,7 @@ package com.ecommerce.project.laptop.services;
 
 import com.ecommerce.project.laptop.entitty.Review;
 import com.ecommerce.project.laptop.reponsitory.ReviewReponsitory;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +10,9 @@ import javax.transaction.Transactional;
 import java.util.List;
 @Transactional
 @Service
+@RequiredArgsConstructor
 public class ReviewServiceImpl implements ReviewService{
-    @Autowired
-    private ReviewReponsitory reviewReponsitory;
+    private final ReviewReponsitory reviewReponsitory;
     @Override
     public List<Review> getAllReview() {
         return reviewReponsitory.findAll();

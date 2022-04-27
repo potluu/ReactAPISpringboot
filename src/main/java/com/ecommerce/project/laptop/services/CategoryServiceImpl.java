@@ -2,8 +2,8 @@ package com.ecommerce.project.laptop.services;
 
 import com.ecommerce.project.laptop.entitty.Category;
 import com.ecommerce.project.laptop.reponsitory.CategoryReponsitory;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -12,9 +12,9 @@ import java.util.List;
 @Service
 @Transactional
 @Log4j2
+@RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
-    @Autowired
-    private CategoryReponsitory categoryReponsitory;
+    private final CategoryReponsitory categoryReponsitory;
 
     @Override
     public List<Category> getAllCategory() {

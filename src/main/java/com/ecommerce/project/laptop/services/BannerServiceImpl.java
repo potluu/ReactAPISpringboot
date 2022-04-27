@@ -2,7 +2,10 @@ package com.ecommerce.project.laptop.services;
 
 import com.ecommerce.project.laptop.entitty.Banner;
 import com.ecommerce.project.laptop.reponsitory.BannerReponsitory;
+import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityManager;
@@ -10,12 +13,12 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.EmptyStackException;
 import java.util.List;
-
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class BannerServiceImpl implements BannerService {
-    @Autowired
-    private BannerReponsitory bannerReponsitory;
+
+    private final BannerReponsitory bannerReponsitory;
 
     @PersistenceContext
     private EntityManager entityManager;

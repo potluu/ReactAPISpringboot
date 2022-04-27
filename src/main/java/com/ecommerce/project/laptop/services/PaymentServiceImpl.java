@@ -2,15 +2,19 @@ package com.ecommerce.project.laptop.services;
 
 import com.ecommerce.project.laptop.entitty.Payment;
 import com.ecommerce.project.laptop.reponsitory.PaymentRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
+@RequiredArgsConstructor
 public class PaymentServiceImpl implements PaymentService{
-    @Autowired
-    private PaymentRepository paymentRepository;
+
+    private final PaymentRepository paymentRepository;
 
     @Override
     public List<Payment> getAllPayment() {

@@ -2,6 +2,7 @@ package com.ecommerce.project.laptop.services;
 
 import com.ecommerce.project.laptop.entitty.ShoppingCart;
 import com.ecommerce.project.laptop.reponsitory.ShoppingReponsirory;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +11,10 @@ import java.util.List;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class ShoppingCartServiceImpl implements ShoppingCartService {
 
-    @Autowired
-    private ShoppingReponsirory shopResp;
+    private final ShoppingReponsirory shopResp;
     @Override
     public List<ShoppingCart> getALlShoppingCart() {
         return shopResp.findAll();

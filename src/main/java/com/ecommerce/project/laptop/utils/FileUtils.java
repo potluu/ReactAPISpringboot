@@ -27,7 +27,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FileUtils {
 private static final  String URL ="src/main/resources/static/";
-private final ProductServiceImpl productService;
+@Autowired
+private  ProductServiceImpl productService;
 
     public  void exportExcel(Excel excel, String key) {
         SXSSFWorkbook workbook = new SXSSFWorkbook();

@@ -3,6 +3,7 @@ package com.ecommerce.project.laptop.services;
 import com.ecommerce.project.laptop.entitty.Account;
 import com.ecommerce.project.laptop.entitty.Bill;
 import com.ecommerce.project.laptop.reponsitory.BillReponsitory;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,10 @@ import java.util.List;
 @Service
 @Transactional
 @Log4j2
+@RequiredArgsConstructor
 public class BillServiceImpl implements BillService {
-    @Autowired
-    private BillReponsitory billReponsitory;
+
+    private final BillReponsitory billReponsitory;
 
     @Override
     public List<Bill> getAllBill() {
