@@ -40,9 +40,7 @@ public class BillController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("not found data by request url");
         }
     }
-
     /*
-
      */
     @DeleteMapping("/bill/{id}")
     public ResponseEntity<?> deleteBillById(@PathVariable long id) {
@@ -52,7 +50,6 @@ public class BillController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("not found data");
         }
     }
-
     /*
 
      */

@@ -1,10 +1,7 @@
 package com.ecommerce.project.laptop;
 
 import com.ecommerce.project.laptop.common.ERole;
-import com.ecommerce.project.laptop.entitty.Account;
-import com.ecommerce.project.laptop.entitty.Banner;
-import com.ecommerce.project.laptop.entitty.Product;
-import com.ecommerce.project.laptop.entitty.Role;
+import com.ecommerce.project.laptop.entitty.*;
 import com.ecommerce.project.laptop.reponsitory.AccountReponsitory;
 import com.ecommerce.project.laptop.reponsitory.BannerReponsitory;
 import com.ecommerce.project.laptop.reponsitory.ProductReponsitory;
@@ -58,9 +55,14 @@ public class ProjectLaptopApplication {
                 .password("$2a$10$.h89l9FpfjzkzXAHSzuf4O6NV3llr7RH0aBupBjnNe2ypXd9Cak1q")
                 .build();
        // accountReponsitory.save(account);
-        Product product =new Product(1l,"dđ","add",1,1,null,33,null,null,null,null,null,null,null,null);
-
-        productReponsitory.save(product);
+//        Brand brand = Brand.builder().name("Brand").build();
+//        Category category=Category.builder().name("Name").build();
+//        List<Category> list1 = new ArrayList<>();
+//        list1.add(category);
+//        ProductDetails productDetails =ProductDetails.builder().color("detkas").build();
+//        Product product =Product.builder().productImages(null).brand(brand).categories((Set<Category>) list1).build();
+//
+//        productReponsitory.save(product);
     };
 
 }

@@ -1,13 +1,17 @@
 package com.ecommerce.project.laptop.dto;
 
+import com.ecommerce.project.laptop.component.Excel;
 import com.ecommerce.project.laptop.entitty.Account;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.streaming.SXSSFSheet;
 
 import javax.persistence.*;
 import java.util.Date;
-
 @Data
-public class AccountDto {
+@NoArgsConstructor
+public class AccountDto extends Excel {
     private long id;
     private String email;
     private Long inforId;
@@ -23,7 +27,6 @@ public class AccountDto {
     private String position;
     private long userId;
     private long adminId;
-
     public AccountDto(Account account) {
         this.id = account.getId();
         this.email = account.getEmail();
@@ -38,5 +41,10 @@ public class AccountDto {
         this.userId = account.getUser().getId();
         this.adminId = account.getAdministrator().getId();
         this.position = account.getAdministrator().getPosition().name();
+    }
+
+    @Override
+    public void writeData(Row cells) {
+
     }
 }

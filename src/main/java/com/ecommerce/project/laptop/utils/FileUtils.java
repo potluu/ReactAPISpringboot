@@ -2,36 +2,58 @@ package com.ecommerce.project.laptop.utils;
 
 import com.ecommerce.project.laptop.component.Excel;
 import com.ecommerce.project.laptop.dto.ProductDto;
+import com.ecommerce.project.laptop.services.AccountService;
+import com.ecommerce.project.laptop.services.ProductServiceImpl;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
+import net.bytebuddy.asm.Advice;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFRow;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
 import java.nio.BufferOverflowException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Log4j2
 @Component
+@RequiredArgsConstructor
 public class FileUtils {
 private static final  String URL ="src/main/resources/static/";
+private final ProductServiceImpl productService;
 
-    public static void exportExcel(Excel excel, String key) {
+    public  void exportExcel(Excel excel, String key) {
         SXSSFWorkbook workbook = new SXSSFWorkbook();
         String path = excel.getUrl() + "/" + excel.getNameFile();
         SXSSFSheet sheet=workbook.createSheet(excel.getTitleSheet());
-        excel.writeTitle(sheet);
         excel.writeHeader(sheet);
-        excel.writeData(sheet);
+        excel.writeTitle(sheet);
+        int index=2;
+        if(key.equals("PRODUCT")){
+            List<ProductDto> productDtos= new ArrayList<>();
+           productService.getAllProduct().forEach(product ->
+            {
+                productDtos.add(new ProductDto(product));
+           });
+           for(ProductDto p:productDtos){
+               Row row=sheet.createRow(index++);
+               p.writeData(row);
+           }
+        }
+
         saveFileEcxel(workbook,excel.getUrl());
 
     }
     public static void saveFileEcxel(SXSSFWorkbook workbook, String url) {
         try {
-            BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(url));
+            BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream("D:/test.xlsx"));
             workbook.write(outputStream);
             workbook.close();
             outputStream.close();

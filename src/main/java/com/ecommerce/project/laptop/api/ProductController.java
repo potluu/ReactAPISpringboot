@@ -9,19 +9,23 @@ import com.ecommerce.project.laptop.services.BrandServiceImpl;
 import com.ecommerce.project.laptop.services.ProductServiceImpl;
 import com.ecommerce.project.laptop.utils.FileUtils;
 import com.ecommerce.project.laptop.utils.TimeUtils;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v12")
+@RequiredArgsConstructor
 public class ProductController {
 
     @Autowired
@@ -29,24 +33,19 @@ public class ProductController {
     @Autowired
     private BrandServiceImpl brandService;
 
-    @PostMapping(value = "/product/excel/file")
-    public ResponseEntity<?> importExcel(@RequestParam("uploadFile") MultipartFile[] listFile) {
-        return ResponseEntity.status(HttpStatus.OK).body("đs");
-    }
+    private final FileUtils fileUtils;
+
+
 
     @PostMapping("/product/file/excel")
     public ResponseEntity<?> exportExcel(@RequestParam("url") String url, @RequestParam("nameFile") String name) {
-        if (true){
-            Excel excel = Excel.builder()
-                    .list(Collections.singletonList(productService.getAllProduct()))
-                    .url("D:")
-                    .nameFile(name+".xlsx")
-                    .header(ProductDto.getTileProductRowExcel())
-                    .TitleSheet("Product")
-                    .titleTable("DANH SÁCH TỒNG SẢN PHẨM")
-                    .typeObject("Product")
-                    .build();
-            FileUtils.exportExcel(excel, "Product");
+        if (url!=null && name!=null){
+          Excel excel=new ProductDto();
+          excel.setHeader(ProductDto.getTileProductRowExcel());
+          excel.setNameFile(name);
+          excel.setTitleSheet("PRODUCT");
+          excel.setUrl("D:");
+            fileUtils.exportExcel(excel,"PRODUCT");
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(false);
 
         } else {
@@ -171,5 +170,8 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("request url invalid data ");
     }
 
-
+    @PostMapping(value = "/product/excel/file")
+    public ResponseEntity<?> importExcel(@RequestParam("uploadFile") MultipartFile[] listFile) {
+        return ResponseEntity.status(HttpStatus.OK).body("đs");
+    }
 }

@@ -4,12 +4,16 @@ import com.ecommerce.project.laptop.component.Excel;
 import com.ecommerce.project.laptop.entitty.Product;
 import com.ecommerce.project.laptop.entitty.Review;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.streaming.SXSSFSheet;
 
 import java.util.Date;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
 public class ProductDto extends Excel {
     private long id;
     private String name;
@@ -25,6 +29,7 @@ public class ProductDto extends Excel {
     private List<CategoryDto> categoryDtoList;
     private List<ProductImageDto> productImageDtos;
     private ProductDetailsDto productDetailsDto;
+    private ProductDto productDto;
 
     public ProductDto(Product product) {
         this.id = product.getId();
@@ -55,20 +60,20 @@ public class ProductDto extends Excel {
     }
 
     @Override
-    public void write(Row cells) {
-        cells.createCell(0).setCellValue(this.getId());
+    public void writeData(Row cells) {
+        cells.createCell(0).setCellValue(this.id);
         //data row name
-        cells.createCell(1).setCellValue(this.getName());
+        cells.createCell(1).setCellValue( this.name);
         //data row description
-        cells.createCell(2).setCellValue(this.getDescription());
+        cells.createCell(2).setCellValue(this.description);
         //data row quantity
-        cells.createCell(3).setCellValue(this.getQuantity());
+        cells.createCell(3).setCellValue(this.quantity);
         //data row discount
-        cells.createCell(4).setCellValue(this.getDiscount());
+        cells.createCell(4).setCellValue(this.discount);
         //data row date
-        cells.createCell(5).setCellValue(this.getCreatedDate());
+        cells.createCell(5).setCellValue(this.createdDate);
         //data row price
-        cells.createCell(6).setCellValue(this.getPrice());
+        cells.createCell(6).setCellValue(this.price);
         //data row brand
         cells.createCell(7).setCellValue(this.nameBrand);
         //data row enter input by person
@@ -80,4 +85,5 @@ public class ProductDto extends Excel {
         //data row total price
         cells.createCell(10).setCellFormula("D4*H7");
     }
+
 }
