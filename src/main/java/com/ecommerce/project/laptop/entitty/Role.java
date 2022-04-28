@@ -2,7 +2,6 @@ package com.ecommerce.project.laptop.entitty;
 
 import javax.persistence.*;
 
-import com.ecommerce.project.laptop.common.ERole;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,7 +9,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Collection;
-import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
